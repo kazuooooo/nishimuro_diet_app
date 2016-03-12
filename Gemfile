@@ -24,7 +24,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'pg', groups: %w(production), require: false
 
-gem 'rails_12factor'
+gem 'devise'
+gem 'omniauth-twitter'
+gem 'slim'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -55,4 +58,8 @@ group :development do
   gem 'hirb'
   gem 'hirb-unicode'
   gem 'awesome_print'
+end
+
+group :production, :staging do
+  gem 'rails_12factor'
 end
