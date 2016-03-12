@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160312092618) do
+ActiveRecord::Schema.define(version: 20160312124209) do
+
+  create_table "heart_beats", force: :cascade do |t|
+    t.datetime "beat_date_time"
+    t.integer  "heart_beat"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
