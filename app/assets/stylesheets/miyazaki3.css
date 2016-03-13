@@ -2,7 +2,7 @@ p.miyazap img { width: 100%; }
 
 /* --- ランキングエリア --- */
 div.ranking {
-width: 300px; /* ランキングエリアの幅 */
+width: 100%; /* ランキングエリアの幅 */
 font-size: 80%;
 }
 
