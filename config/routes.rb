@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'top#index'
   get '/measure' => 'heart_beats#measure'
+  get '/heart_beats/graph'
   resources :heart_beats, :only => [:index, :create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
