@@ -6,24 +6,23 @@ class HeartBeatsController < ApplicationController
   def graph
     beats_data = User.first.heart_beats.limit(200).order(id: :desc)
     time  = beats_data.pluck(:beat_date_time).map {|time| time.strftime('%H:%M:%S')}.reverse
+    null_times = Array.new(198, "")
+    times = [time.first, null_times.flatten, time.last]
     beats = beats_data.pluck(:heart_beat).reverse
-    @graph = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: '心拍数')
-      null_times = Array.new(198, "")
-      times = [time.first, null_times.flatten, time.last]
-      f.xAxis(categories: times.flatten)
-      f.series(name: '心拍', data: beats)
+    @all_calories = 0
+    calories = beats.map do |beat|
+      @all_calories += beat.to_f/ (220-34) * 40 * 1 / 12 * 62 / 1000 * 5
     end
-
-    # category = [1,3,5,7]
-    # current_quantity = [1000,5000,3000,8000]
-    #
-    # @graph = LazyHighCharts::HighChart.new('graph') do |f|
-    #   f.title(text: 'ItemXXXの在庫の推移')
-    #   f.xAxis(categories: category)
-    #   f.series(name: '在庫数', data: current_quantity)
-    # end
+    @graph = LazyHighCharts::HighChart.new('graph') do |f|
+      f.title(text: '心拍数/34歳/174cm/62kg/男性')
+      f.xAxis(categories: times.flatten)
+      f.options[:yAxis] = [{ title: { text: '消費カロリー' }}, { title: { text: '心拍数'}, opposite: true}]
+      f.series(name: '消費カロリー',     data: calories, type: 'column', yAxis: 1)
+      f.series(name: '心拍', data: beats, type: 'spline')
+    end
   end
+
+
   def index
     User.first.heart_beats.create(beat_date_time: Time.now, heart_beat: params[:heart_beat])
     puts "create!!"
