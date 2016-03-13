@@ -16,7 +16,7 @@ class HeartBeatsController < ApplicationController
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '心拍数/34歳/174cm/62kg/男性')
       f.xAxis(categories: times.flatten)
-      f.options[:yAxis] = [{ title: { text: '消費カロリー' }}, { title: { text: '心拍数'}, opposite: true}]
+      f.options[:yAxis] = [{ title: { text: '心拍数' }}, { title: { text: '消費カロリー'}, opposite: true}]
       f.series(name: '消費カロリー',     data: calories, type: 'column', yAxis: 1)
       f.series(name: '心拍', data: beats, type: 'spline')
     end
