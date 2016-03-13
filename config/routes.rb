@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   root 'top#index'
   get '/measure' => 'heart_beats#measure'
   get '/heart_beats/graph'
+  get '/calories' => 'top#calories'
+  get '/ranking' => 'top#ranking'
   resources :heart_beats, :only => [:index, :create]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,0 +1,119 @@
+p.miyazap img { width: 100%; }
+
+/* --- ランキングエリア --- */
+div.ranking {
+width: 300px; /* ランキングエリアの幅 */
+font-size: 80%;
+}
+
+/* --- 見出し --- */
+div.ranking h2 {
+margin: 0 0 10px; /* 見出しのマージン（上、左右、下） */
+padding: 5px 10px; /* 見出しのパディング（上下、左右） */
+background-color: #f0f0f0;
+font-size: 100%;
+}
+
+/* --- ランキングリスト --- */
+div.ranking ol {
+margin: 0;
+padding: 0 0 5px; /* ランキングリストのパディング（上、左右、下） */
+border-top: 1px #c0c0c0 dotted; /* ランキングリストの上境界線 */
+list-style-type: none;
+}
+
+/* --- リスト項目 --- */
+div.ranking li {
+padding: 9px 0 9px 48px; /* 項目のパディング（上右下左） */
+background-repeat: no-repeat;
+background-position: 3px 4px; /* 背景画像の表示位置（左からの距離、上からの距離） */
+border-bottom: 1px #c0c0c0 dotted; /* 項目の下境界線 */
+line-height: 120%;
+}
+
+/* --- マーカー画像 --- */
+div.ranking li.rank1 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_1.gif); /* 1位の項目 */
+}
+div.ranking li.rank2 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_2.gif); /* 2位の項目 */
+}
+div.ranking li.rank3 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_3.gif); /* 3位の項目 */
+}
+div.ranking li.rank4 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_4.gif); /* 4位の項目 */
+}
+div.ranking li.rank5 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_5.gif); /* 5位の項目 */
+}
+div.ranking li.rank6 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_6.gif); /* 6位の項目 */
+}
+div.ranking li.rank7 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_7.gif); /* 7位の項目 */
+}
+div.ranking li.rank8 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_8.gif); /* 8位の項目 */
+}
+div.ranking li.rank9 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_9.gif); /* 9位の項目 */
+}
+div.ranking li.rank10 {
+background-image: url(../../../../../Downloads/miyazaki.zip/rank_10.gif); /* 10位の項目 */
+}
+
+
+
+$color: #2194E0;
+
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.wrapper {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.button {
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  color: $color;
+  border: 2px solid $color;
+  font-size: 24px;
+  display: inline-block;
+  border-radius: 0.3em;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: "";
+    background-color: rgba(255,255,255,0.5);
+    height: 100%;
+    width: 3em;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -4.5em;
+    transform: skewX(-45deg) translateX(0);
+    transition: none;
+  }
+  &:hover {
+    background-color: $color;
+    color: #fff;
+  border-bottom: 4px solid darken($color, 10%);
+    &:before {
+      transform: skewX(-45deg) translateX(13.5em);
+     transition: all 0.5s ease-in-out;
+    }
+  }
+}

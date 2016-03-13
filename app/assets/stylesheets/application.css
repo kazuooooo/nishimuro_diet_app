@@ -14,3 +14,5 @@
  *= require_self
  *= require bootstrap-material-design
  */
+ .miyazap { width: 100% !important; }
+
