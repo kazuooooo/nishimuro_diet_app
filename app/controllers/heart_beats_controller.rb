@@ -4,11 +4,14 @@ class HeartBeatsController < ApplicationController
   def measure
   end
   def graph
-    time  = User.first.heart_beats.pluck(:beat_date_time).map {|time| time.strftime('%H:%M:%S')}
-    beats = User.first.heart_beats.pluck(:heart_beat)
+    beats_data = User.first.heart_beats.limit(100)
+    time  = beats_data.pluck(:beat_date_time).map {|time| time.strftime('%H:%M:%S')}
+    beats = beats_data.pluck(:heart_beat)
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '心拍数')
-      f.xAxis(categories: time)
+      null_times = Array.new(98, "")
+      times = [time.first, null_times.flatten, time.last]
+      f.xAxis(categories: times.flatten)
       f.series(name: '心拍', data: beats)
     end
 
