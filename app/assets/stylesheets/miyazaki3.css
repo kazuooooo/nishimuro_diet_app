@@ -2,7 +2,7 @@ p.miyazap img { width: 100%; }
 
 /* --- ランキングエリア --- */
 div.ranking {
-width: 100%; /* ランキングエリアの幅 */
+width: 100% !important; /* ランキングエリアの幅 */
 font-size: 80%;
 }
 
@@ -33,6 +33,7 @@ line-height: 120%;
 
 /* --- マーカー画像 --- */
 div.ranking li.rank1 {
+
 background-image: url(../../../../../Downloads/miyazaki.zip/rank_1.gif); /* 1位の項目 */
 }
 div.ranking li.rank2 {
