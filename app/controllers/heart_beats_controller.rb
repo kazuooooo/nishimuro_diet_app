@@ -9,7 +9,7 @@ class HeartBeatsController < ApplicationController
     beats = beats_data.pluck(:heart_beat).reverse
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
       f.title(text: '心拍数')
-      null_times = Array.new(98, "")
+      null_times = Array.new(198, "")
       times = [time.first, null_times.flatten, time.last]
       f.xAxis(categories: times.flatten)
       f.series(name: '心拍', data: beats)
